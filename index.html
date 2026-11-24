@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Інтернаціоналізація (i18n) — Усі завдання</title>
+  <!-- Підключення бібліотеки i18next через CDN -->
+  <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f4f4f9; color: #333; }
+    header { display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 15px 25px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); margin-bottom: 20px; }
+    .section-box { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); margin-bottom: 20px; }
+    .section-title { font-size: 14px; text-transform: uppercase; color: #777; margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 8px; }
+    .catalog { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; margin-top: 15px; }
+    .card { border: 1px solid #e0e0e0; padding: 15px; border-radius: 8px; background: #fafafa; }
+    .card h3 { margin-top: 0; }
+    .price { font-weight: bold; color: #2a7ae2; }
+    button { background: #2a7ae2; color: #fff; border: none; padding: 8px 14px; border-radius: 5px; cursor: pointer; font-size: 14px; }
+    button:hover { background: #1d5bbf; }
+    .btn-reset { background: #6c757d; margin-left: 10px; }
+    .btn-reset:hover { background: #5a6268; }
+
+    /* Модальне вікно */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal-box {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      max-width: 360px;
+      width: 90%;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+    }
+    .modal-buttons { display: flex; gap: 15px; justify-content: center; margin-top: 20px; }
+  </style>
+</head>
+<body>
+
+  <!-- Модальне вікно вибору мови при першому візиті -->
+  <div id="language-modal" class="modal-overlay">
+    <div class="modal-box">
+      <h2>Оберіть мову / Choose language</h2>
+      <p>Виберіть мову для відображення сайту.<br>Select a language to view the website.</p>
+      <div class="modal-buttons">
+        <button onclick="selectInitialLanguage('uk')">Українська</button>
+        <button onclick="selectInitialLanguage('en')">English</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Шапка сайту із загальним перемикачем мов -->
+  <header>
+    <h1 id="main-header" style="margin: 0; font-size: 22px;">Практична робота: i18n</h1>
+    <div>
+      <label for="language-selector" id="lang-label">Мова: </label>
+      <select id="language-selector" style="padding: 6px; border-radius: 4px;">
+        <option value="uk">Українська</option>
+        <option value="en">English</option>
+      </select>
+      <button class="btn-reset" onclick="resetLanguageChoice()" title="Очистити localStorage">Скинути вибір</button>
+    </div>
+  </header>
+
+  <!-- Завдання 1: Чистий JS + JSON -->
+  <section class="section-box">
+    <p class="section-title" id="task1-label">Завдання 1: Чистий JavaScript (fetch + JSON)</p>
+    <h2 id="pure-greeting">...</h2>
+    <p id="pure-farewell">...</p>
+  </section>
+
+  <!-- Завдання 2: Бібліотека i18next -->
+  <section class="section-box">
+    <p class="section-title" id="task2-label">Завдання 2: Бібліотека i18next</p>
+    <h2 id="i18n-greeting">...</h2>
+    <p id="i18n-farewell">...</p>
+  </section>
+
+  <!-- Завдання 3: Каталог товарів із модалкою та збереженням вибору -->
+  <section class="section-box">
+    <p class="section-title" id="task3-label">Завдання 3: Динамічний каталог товарів (localStorage + i18next)</p>
+    <div id="catalog-container" class="catalog"></div>
+  </section>
+
+  <script src="script/app.js"></script>
+</body>
+</html>
