@@ -1,0 +1,4 @@
+{
+  "greeting": "Hello (Pure JS + JSON)",
+  "farewell": "Goodbye! This block is translated via fetch()."
+}
